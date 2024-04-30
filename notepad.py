@@ -302,13 +302,13 @@ def show_about():
     开发者: Hmily
     一个简单易用的文本编辑工具，允许用户快速打开、编辑和保存文本文件。
     感谢您选择使用本软件，我们希望它能满足您的需要。
-    官方网站: https://www.github.com/ihmily
+    官方网站: https://github.com/ihmily/NotepadX
     """
     messagebox.showinfo("关于 记事本", about_text)
 
 
 def help_web():
-    webbrowser.open("http://www.baidu.com")
+    webbrowser.open("https://github.com/ihmily/NotepadX")
 
 
 def check_and_newfile(_event=None):
