@@ -70,7 +70,7 @@ def now_time(_event=None):
     scr.insert("insert", current_time)
 
 
-def find():
+def find(_event=None):
     def find_text():
         text_to_find = find_entry.get()
 
@@ -137,7 +137,7 @@ def find():
     find_window.geometry(f"+{x}+{y}")
 
 
-def replace():
+def replace(_event=None):
     def replace_text():
         text_to_replace = replace_entry.get()
         text_to_find = find_entry.get()
@@ -169,6 +169,8 @@ def replace():
 
     find_entry.focus_set()
 
+    replace_window.attributes('-topmost', True)
+
     replace_window.update_idletasks()
     screen_width = replace_window.winfo_screenwidth()
     screen_height = replace_window.winfo_screenheight()
@@ -177,8 +179,6 @@ def replace():
     x = (screen_width - window_width) // 2
     y = (screen_height - window_height) // 2
     replace_window.geometry(f"+{x}+{y}")
-
-    replace_window.attributes('-topmost', True)
 
 
 def cut():
@@ -427,6 +427,8 @@ scr.bind("<Control-Shift-x>", to_exit)
 scr.bind("<Control-Shift-X>", to_exit)
 scr.bind("<Control-F>", find)
 scr.bind("<Control-f>", find)
+scr.bind("<Control-R>", replace)
+scr.bind("<Control-r>", replace)
 scr.bind("<Control-H>", replace)
 scr.bind("<Control-h>", replace)
 scr.bind("<Control-W>", toggle_wrap)
@@ -444,11 +446,11 @@ def show_context_menu(event):
 
 # 创建右键菜单
 context_menu = tk.Menu(root, tearoff=0)
-context_menu.add_command(label="复制", command=copy)
-context_menu.add_command(label="粘贴", command=paste)
+context_menu.add_command(label="复制  Ctrl+C", command=copy)
+context_menu.add_command(label="粘贴  Ctrl+V", command=paste)
 context_menu.add_separator()
-context_menu.add_command(label="剪切", command=cut)
-context_menu.add_command(label="全选", command=select_all)
+context_menu.add_command(label="剪切  Ctrl+X", command=cut)
+context_menu.add_command(label="全选  Ctrl+A", command=select_all)
 
 # 将右键菜单与文本框绑定
 scr.bind("<Button-3>", show_context_menu)
